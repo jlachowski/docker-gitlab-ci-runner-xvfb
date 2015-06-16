@@ -92,7 +92,6 @@ rm -rf /var/lib/apt/lists/*
 chown -R gitlab_ci_runner:gitlab_ci_runner ${HOME_DIR}/
 
 # add virtual evironment
-pip install -U pip
 pip install virtualenv
 pip install virtualenvwrapper
 
