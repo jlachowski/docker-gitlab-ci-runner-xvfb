@@ -62,9 +62,16 @@ EOF
 
 # purge build dependencies
 apt-get purge -y --auto-remove gcc g++ patch make \
-  libc6-dev ruby2.1-dev zlib1g-dev libyaml-dev libssl-dev \
-  libgdbm-dev libreadline-dev libncurses5-dev libffi-dev \
-  libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev
+  libc6-dev ruby2.1-dev \
+
+# install additional packages
+apt-get install -y python-pip python-dev build-essential \
+  checkinstall memcached libmemcache-dev python-imaging \
+  libjpeg8-dev unzip libfreetype6 libfreetype6-dev \
+  libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 \
+  libgdk-pixbuf2.0-dev fontconfig libgeoip-dev \
+  python-numpy python-scipy \
+  firefox xvfb
 
 # cleanup
 rm -rf /var/lib/apt/lists/*
@@ -76,6 +83,11 @@ chown -R gitlab_ci_runner:gitlab_ci_runner ${HOME_DIR}/
 pip install -U pip
 pip install virtualenv
 pip install virtualenvwrapper
+
+# set virtualenv variables
+echo "export WORKON_HOME=~/.virtualenvs" >> ${HOME_DIR}/.bashrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ${HOME_DIR}/.bashrc
+chown gitlab_ci_runner:gitlab_ci_runner ${HOME_DIR}/.bashrc
 
 # install gitlab_ci_runner bootscript
 cp lib/support/init.d/gitlab_ci_runner /etc/init.d/gitlab_ci_runner
