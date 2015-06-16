@@ -72,17 +72,13 @@ stdout_logfile=/var/log/supervisor/%(program_name)s.log
 stderr_logfile=/var/log/supervisor/%(program_name)s.log
 EOF
 
-# purge build dependencies
-apt-get purge -y --auto-remove gcc g++ patch make \
-  libc6-dev ruby2.1-dev \
-
 # install additional packages
 apt-get install -y python-pip python-dev build-essential \
   checkinstall memcached libmemcache-dev python-imaging \
   libjpeg8-dev unzip libfreetype6 libfreetype6-dev \
   libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 \
   libgdk-pixbuf2.0-dev fontconfig libgeoip-dev \
-  python-numpy python-scipy \
+  python-numpy python-scipy libssl-dev \
   firefox xvfb
 
 # cleanup
