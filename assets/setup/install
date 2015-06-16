@@ -72,6 +72,11 @@ rm -rf /var/lib/apt/lists/*
 # make sure everything in ${HOME_DIR} is owned by the gitlab_ci user
 chown -R gitlab_ci_runner:gitlab_ci_runner ${HOME_DIR}/
 
+# add virtual evironment
+pip install -U pip
+pip install virtualenv
+pip install virtualenvwrapper
+
 # install gitlab_ci_runner bootscript
 cp lib/support/init.d/gitlab_ci_runner /etc/init.d/gitlab_ci_runner
 chmod +x /etc/init.d/gitlab_ci_runner
