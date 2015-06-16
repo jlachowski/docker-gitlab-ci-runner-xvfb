@@ -50,8 +50,20 @@ cat > /etc/supervisor/conf.d/runner.conf <<EOF
 [program:runner]
 priority=20
 directory=${INSTALL_DIR}
-environment=HOME=${HOME_DIR}
+environment=HOME=${HOME_DIR},DISPLAY=":99"
 command=/usr/local/bin/bundle exec ./bin/runner
+user=gitlab_ci_runner
+autostart=true
+autorestart=true
+stopsignal=USR2
+stdout_logfile=/var/log/supervisor/%(program_name)s.log
+stderr_logfile=/var/log/supervisor/%(program_name)s.log
+
+[program:xvfb]
+priority=10
+directory=${HOME_DIR}
+environment=HOME=${HOME_DIR},DISPLAY=":99"
+command=/usr/bin/Xvfb :99 -screen scr 1024x768x24 -ac
 user=gitlab_ci_runner
 autostart=true
 autorestart=true
