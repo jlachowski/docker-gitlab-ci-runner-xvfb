@@ -9,10 +9,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E1DD270288B4E6030699E45F
  && apt-get install -y supervisor git-core openssh-client ruby2.1 \
       zlib1g libyaml-0-2 libssl1.0.0 \
       libgdbm3 libreadline6 libncurses5 libffi6 \
-      libxml2 libxslt1.1 libcurl3 libicu52 
-
-&& gem install --no-document bundler \
-&& rm -rf /var/lib/apt/lists/* # 20150613
+      libxml2 libxslt1.1 libcurl3 libicu52 \
+ && gem install --no-document bundler \
+ && rm -rf /var/lib/apt/lists/* # 20150613
 
 ADD assets/setup/ /app/setup/
 RUN chmod 755 /app/setup/install
