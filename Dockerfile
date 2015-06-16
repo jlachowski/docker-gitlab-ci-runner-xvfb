@@ -10,6 +10,17 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E1DD270288B4E6030699E45F
       zlib1g libyaml-0-2 libssl1.0.0 \
       libgdbm3 libreadline6 libncurses5 libffi6 \
       libxml2 libxslt1.1 libcurl3 libicu52 \
+      python-pip python-dev build-essential \
+      checkinstall zlib1g-dev libyaml-dev libssl-dev \
+      memcached libmemcache-dev python-imaging libjpeg8-dev \
+      unzip zlib1g libfreetype6 libfreetype6-dev \
+      libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 \
+      libgdk-pixbuf2.0-dev \
+      libgdbm-dev libreadline-dev libncurses5-dev libffi-dev \
+      libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev \
+      fontconfig libgeoip-dev \
+      python-numpy python-scipy \
+      firefox xvfb
 && gem install --no-document bundler \
 && rm -rf /var/lib/apt/lists/* # 20150613
 
