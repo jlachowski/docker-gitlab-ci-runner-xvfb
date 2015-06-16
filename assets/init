@@ -44,12 +44,6 @@ appStart () {
   if [ ! -e ${DATA_DIR}/config.yml ]; then
     appSetup
   fi
-  
-  # export variables
-  export DISPLAY=:99
-  
-  # start Xvfb
-  sudo -u gitlab_ci_runner -H /usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac &
 
   # remove  stale runners.pid if it exists
   sudo -u gitlab_ci_runner -H rm -rf ${INSTALL_DIR}/tmp/pids/runners.pid
